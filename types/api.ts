@@ -79,7 +79,7 @@ export interface BMIFormData {
 
 export interface NutritionFormData extends BMIFormData {
   sex: Sex;
-  age_value: number;
+  age_value?: number;
   age_type: AgeType;
   activity_level: ActivityLevel;
 }

@@ -72,7 +72,10 @@ export const NutritionCalculator: React.FC = () => {
       const apiMeasurementUnits = formData.measurement_units === 'metric' ? 'met' : 'std';
       params.append('measurement_units', apiMeasurementUnits);
       params.append('sex', formData.sex);
-      params.append('age_value', String(formData.age_value));
+      // Validation ensures age_value exists, but TypeScript needs a check
+      if (formData.age_value !== undefined && formData.age_value !== null) {
+        params.append('age_value', String(formData.age_value));
+      }
       // API expects 'mos' not 'months' for age type
       const apiAgeType = formData.age_type === 'months' ? 'mos' : formData.age_type;
       params.append('age_type', apiAgeType);
