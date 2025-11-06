@@ -76,9 +76,8 @@ export const NutritionCalculator: React.FC = () => {
       if (formData.age_value !== undefined && formData.age_value !== null) {
         params.append('age_value', String(formData.age_value));
       }
-      // API expects 'mos' not 'months' for age type
-      const apiAgeType = formData.age_type === 'months' ? 'mos' : formData.age_type;
-      params.append('age_type', apiAgeType);
+      // API expects 'mos' for age type, which matches our AgeType
+      params.append('age_type', formData.age_type);
       // Activity level may contain spaces, URLSearchParams handles encoding automatically
       params.append('activity_level', formData.activity_level.trim());
 
